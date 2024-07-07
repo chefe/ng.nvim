@@ -38,4 +38,16 @@ M.get_tcb_under_cursor = function(bufnr, callback)
   )
 end
 
+--- Check if the document is part of an anuglar project.
+--- @param bufnr integer Buffer handle or 0 for current.
+--- @param callback lsp.Handler Function to call with the lsp response.
+M.is_angular_core_in_owning_project = function(bufnr, callback)
+  return vim.lsp.buf_request(
+    bufnr or 0,
+    'angular/isAngularCoreInOwningProject',
+    { textDocument = vim.lsp.util.make_text_document_params(bufnr or 0) },
+    callback
+  )
+end
+
 return M

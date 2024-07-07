@@ -7,6 +7,7 @@ A plugin to bring additional functionality for [Angular][1] to neovim.
 - Go to template for component under cursor
 - Go to component(s) for template under cursor
 - Display template type check block
+- Check if a file is part of an angular project
 
 ## Usage
 
@@ -18,6 +19,14 @@ vim.keymap.set('v', '<leader>ab', '<cmd>lua require("ng.lsp").show_template_tcb(
 vim.keymap.set('v', '<leader>abt', '<cmd>lua require("ng.lsp").show_template_tcb(0, "tab")<cr>', opts)
 vim.keymap.set('v', '<leader>abv', '<cmd>lua require("ng.lsp").show_template_tcb(0, "vertical")<cr>', opts)
 vim.keymap.set('v', '<leader>abh', '<cmd>lua require("ng.lsp").show_template_tcb(0, "horizontal")<cr>', opts)
+
+require('ng.lsp').is_in_angular_project(0, function (result)
+  if result then
+    vim.print('Angular project detected')
+  else
+    vim.print('No angular project detected')
+  end
+end)
 ```
 
 ## Credits

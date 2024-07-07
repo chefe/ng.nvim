@@ -38,4 +38,13 @@ M.show_template_tcb = function(bufnr, target)
   end)
 end
 
+--- Check if the file of the provided buffer is part of an angular project.
+--- @param bufnr integer Buffer handle or 0 for current.
+--- @param callback function This callback is called with `true` or `false`.
+M.is_in_angular_project = function(bufnr, callback)
+  requests.is_angular_core_in_owning_project(bufnr, function(_, result)
+    callback(result and result == true)
+  end)
+end
+
 return M
