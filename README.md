@@ -8,6 +8,23 @@ A plugin to bring additional functionality for [Angular][1] to neovim.
 - Go to component(s) for template under cursor
 - Display template type check block
 - Check if a file is part of an angular project
+- Setup [tree sitter grammer for angular][2]
+
+## Installation
+
+[Lazy][3]:
+
+```lua
+return {
+  {
+    'chefe/ng.nvim',
+    dependencies = { 'dlvandenberg/tree-sitter-angular' },
+    config = function()
+      require('ng').setup()
+    end,
+  },
+}
+```
 
 ## Usage
 
@@ -31,9 +48,11 @@ end)
 
 ## Credits
 
-- [angular/vscode-ng-language-server][2]
-- [joeveiga/ng.nvim][3]
+- [angular/vscode-ng-language-server][4]
+- [joeveiga/ng.nvim][5]
 
 [1]: https://angular.dev
-[2]: https://github.com/angular/vscode-ng-language-service
-[3]: https://github.com/joeveiga/ng.nvim
+[2]: https://github.com/dlvandenberg/tree-sitter-angular
+[3]: https://lazy.folke.io
+[4]: https://github.com/angular/vscode-ng-language-service
+[5]: https://github.com/joeveiga/ng.nvim
