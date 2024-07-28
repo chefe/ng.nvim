@@ -9,6 +9,12 @@ A plugin to bring additional functionality for [Angular][1] to neovim.
 - Display template type check block
 - Check if a file is part of an angular project
 - Setup [tree sitter grammer for angular][2]
+- Support for refactorings
+
+### Refactorings
+
+- Switch component from external template to inline template
+- Switch component from inline template to external template
 
 ## Installation
 
@@ -36,6 +42,8 @@ vim.keymap.set('v', '<leader>ab', '<cmd>lua require("ng.lsp").show_template_tcb(
 vim.keymap.set('v', '<leader>abt', '<cmd>lua require("ng.lsp").show_template_tcb(0, "tab")<cr>', opts)
 vim.keymap.set('v', '<leader>abv', '<cmd>lua require("ng.lsp").show_template_tcb(0, "vertical")<cr>', opts)
 vim.keymap.set('v', '<leader>abh', '<cmd>lua require("ng.lsp").show_template_tcb(0, "horizontal")<cr>', opts)
+vim.keymap.set('n', '<leader>arte', '<cmd>lua require("ng.refactor").switch_component_to_external_template(0)<cr>', opts)
+vim.keymap.set('n', '<leader>arti', '<cmd>lua require("ng.refactor").switch_component_to_inline_template(0)<cr>', opts)
 
 require('ng.lsp').is_in_angular_project(0, function (result)
   if result then
