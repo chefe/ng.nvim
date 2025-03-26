@@ -8,7 +8,7 @@ installAll() {
   mkdir -p build/ext/bin
 
   checkInstall "ShellCheck" "0.10.0"
-  checkInstall "StyLua" "0.20.0"
+  checkInstall "StyLua" "2.0.2"
 }
 
 checkInstall() {
