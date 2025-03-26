@@ -53,6 +53,7 @@ installStyLua() {
   version=$2
 
   curl -L "https://github.com/JohnnyMorganz/StyLua/releases/download/v${version}/stylua-linux-x86_64.zip" --output "${install_path}/tmp/stylua.zip"
+  rm -rf "${install_path}/stylua"
   unzip "${install_path}/tmp/stylua.zip" -d "${install_path}/stylua"
 
   linkStyLua "${install_path}"
