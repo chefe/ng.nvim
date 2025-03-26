@@ -45,7 +45,8 @@ installShellCheck() {
 linkShellCheck() {
   install_path=$1
 
-  ln -s "$(readlink -f "${install_path}/shellcheck/shellcheck")" "${install_path}/bin/shellcheck"
+  bin_path="$(readlink -f "${install_path}/shellcheck/shellcheck")"
+  ln -s "${bin_path}" "${install_path}/bin/shellcheck"
 }
 
 installStyLua() {
@@ -62,8 +63,10 @@ installStyLua() {
 linkStyLua() {
   install_path=$1
 
-  ln -s "$(readlink -f "${install_path}/stylua/stylua")" "${install_path}/bin/stylua"
+  bin_path="$(readlink -f "${install_path}/stylua/stylua")"
+  ln -s "${bin_path}" "${install_path}/bin/stylua"
 }
 
-cd "$(dirname "$(readlink -f "$0")")/.."
+script_path="$(readlink -f "$0")"
+cd "$(dirname "${script_path}")/.."
 installAll
