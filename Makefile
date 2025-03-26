@@ -11,7 +11,7 @@ ci: lint
 lint: shellcheck stylua
 
 shellcheck: setup
-	shellcheck .envrc scripts/*
+	shellcheck --enable=all --severity=style .envrc scripts/*
 
 stylua: setup
 	stylua --check lua
