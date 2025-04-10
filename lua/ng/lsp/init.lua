@@ -1,4 +1,5 @@
 local requests = require('ng.lsp.requests')
+local server = require('ng.lsp.server')
 local utils = require('ng.lsp.utils')
 
 local M = {}
@@ -45,6 +46,13 @@ M.is_in_angular_project = function(bufnr, callback)
   requests.is_angular_core_in_owning_project(bufnr, function(_, result)
     callback(result and result == true)
   end)
+end
+
+--- Generate the command to start the angular language server.
+--- @param work_dir string Path to the current project root.
+--- @return string[]|nil command Command or `nil` if the server was not found.
+M.get_angular_server_cmd = function(workdir)
+  return server.get_angular_server_cmd(workdir)
 end
 
 return M

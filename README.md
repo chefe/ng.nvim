@@ -10,6 +10,7 @@ A plugin to bring additional functionality for [Angular][1] to neovim.
 - Check if a file is part of an angular project
 - Setup [tree sitter grammer for angular][2]
 - Support for refactorings
+- Generate the command to start the angular language server
 
 ### Refactorings
 
@@ -52,6 +53,13 @@ require('ng.lsp').is_in_angular_project(0, function (result)
     vim.print('No angular project detected')
   end
 end)
+
+require('lspconfig')['angularls'].setup({
+    cmd = require('ng.lsp').get_angular_server_cmd(vim.fn.getcwd()),
+    on_new_config = function(new_config, new_root_dir)
+        new_config.cmd = require('ng.lsp').get_angular_server_cmd(new_root_dir),
+    end,
+})
 ```
 
 ## Credits
